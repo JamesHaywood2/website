@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+    <head>
+				<!-- BOOTSTRAP IMPORTS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    </head>
+		
+		<!-- WEBPAGE CONTENT -->
+    <body class="main-container">
+        <title>Cost of Attendance Calculator</title>
+        <link href="style.css" rel="stylesheet">
+        
+        <div class="title-container">
+            <img src="./assets/calculator-solid.svg" alt="Calculator" height="100px" id="calculator-img"/>
+            <h1 style="padding: 20px;">UAH Cost of Attendance Calculator</h1>
+        </div>
+        <p>
+            Calculate your total cost of attendance here at UAH by inputting your residency status,
+            how many credits you are taking in each college, meal plan, honors college status, and
+            if you need to purchase a parking permit. When you have filled in all your data, click
+            the Submit button to calculate your total cost and view your cost breakdown.
+        </p>
+
+        <div class="row-style">
+
+            <form class="col-style">
+            </form>
+        
+            <div class="col-style">
+            </div>
+        
+        </div>
+
+        <div class="input-group mb-3">
+            <span class="input-group-text">
+                <div class="form-check form-check-inline">
+                    <input checked class="form-check-input" type="radio" name="inlineRadioOptions" id="residentRadio" value="resident">
+                    <label class="form-check-label" for="residentRadio">Resident</label>
+                </div>
+            </span>
+            <span class="input-group-text">
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="nonResidentRadio" value="nonResident">
+                    <label class="form-check-label" for="nonResidentRadio">Non-Resident</label>
+                </div>
+            </span>
+        </div>
+
+        <div>
+            <div class="input-group mb-3" id="cahss">
+                <label class="input-group-text" for="feesCAHSS">College of AHSS Credits</label>
+                <input type="number" id="feesCAHSS" class="form-control" value="0" min="0" max="18">
+            </div>
+            <div class="input-group mb-3" id="cob">
+                <label class="input-group-text" for="feesCOB">College of Business Credits</label>
+                <input type="number" id="feesCOB" class="form-control" value="0" min="0" max="18">
+            </div>
+            <div class="input-group mb-3" id="coed">
+                <label class="input-group-text" for="feesCOEd">College of Education Credits</label>
+                <input type="number" id="feesCOEd" class="form-control" value="0" min="0" max="18">
+            </div>
+            <div class="input-group mb-3" id="coeng">
+                <label class="input-group-text" for="feesCOEng">College of Engineering Credits</label>
+                <input type="number" id="feesCOEng" class="form-control" value="0" min="0" max="18">
+            </div>
+            <div class="input-group mb-3" id="con">
+                <label class="input-group-text" for="feesNUR">College of Nursing Credits</label>
+                <input type="number" id="feesNUR" class="form-control" value="0" min="0" max="18">
+            </div>
+            <div class="input-group mb-3" id="cos">
+                <label class="input-group-text" for="feesCOS">College of Science Credits</label>
+                <input type="number" id="feesCOS" class="form-control" value="0" min="0" max="18">
+            </div>
+        </div>
+        
+        <div class="input-group mb-3">
+            <label class="input-group-text" for="inputGroupSelect01">Meal Plan</label>
+            <select class="form-select" id="inputGroupSelect01">
+                <option value="1" selected>Option #1 - $1,925: 21 meals/week + $200 Charger Bucks</option>
+                <option value="2">Option #2 - $1,925: 14 meals/week + $300 Charger Bucks</option>
+                <option value="3">Option #3 - $1,925: 10 meals/week + $500 Charger Bucks</option>
+                <option value="4">Option #4 - $1,925: 100 meals/semester + $700 Charger Bucks</option>
+                <option value="5">Option #5 - $645: 645 Dining Dollars</option>
+                <option value="6">Option #6 - $380: 380 Dining Dollars</option>
+                <option value="7">Option #7 - $680: 5 meals/week + $175 Charger Bucks</option>
+                <option value="8">Option #8 - $680: 70 meals/semester + $150 Charger Bucks</option>
+            </select>
+        </div>
+
+        <div>
+            <div class="input-group mb-3">
+                <div class="input-group-text">
+                    <input class="form-check-input mt-0" id="honorsCollege" type="checkbox">
+                </div>
+                <label class="input-group-text" for="honorsCollege">Honors College?</label>
+            </div>
+            
+            <div class="input-group mb-3">
+                <div class="input-group-text">
+                    <input class="form-check-input mt-0" id="parkingPermit" type="checkbox">
+                </div>
+                <label class="input-group-text" for="parkingPass">Parking Permit?</label>
+            </div>
+        </div>
+
+        <script src="script.js"></script>
+        <button type="button" class="btn btn-outline-light" onclick="calcCosts()">Submit</button>
+
+
+        <div class="mb-3">
+            <h5 class="col-style" id="TotalCredits">Total Credits: 0</h5>
+        </div>
+
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Description</th>
+                <th scope="col">Amount</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>College of AHSS Fee</td>
+                <td id="CAHSSFee">$0</td>
+              </tr>
+              <tr>
+                <td>College of Business Fee</td>
+                <td id="COBFee">$0</td>
+              </tr>
+              <tr>
+                <td>College of Education Fee</td>
+                <td id="COEdFee">$0</td>
+              </tr>
+              <tr>
+                <td>College of Engineering Fee</td>
+                <td id="COEngFee">$0</td>
+              </tr>
+              <tr>
+                <td>College of Nursing Fee</td>
+                <td id="CONFee">$0</td>
+              </tr>
+              <tr>
+                <td>College of Science Fee</td>
+                <td id="COSFee">$0</td>
+              </tr>
+              <tr>
+                <td>Infrastructure Fee</td>
+                <td id="InfrastructureFee">$0</td>
+              </tr>
+              <tr>
+                <td>Honors College Fee</td>
+                <td id="HonorsFee">$0</td>
+              </tr>
+              <tr>
+                <td>Meal Plan</td>
+                <td id="MealPlan">$0</td>
+              </tr>
+              <tr>
+                <td>Parking Permit</td>
+                <td id="ParkingPermit">$0</td>
+              </tr>
+              <tr>
+                <td>Tuition</td>
+                <td id="Tuition">$0</td>
+              </tr>
+              <tr>
+                <th>TOTAL</th>
+                <th id="Total">$0</th>
+              </tr>
+            </tbody>
+          </table>
+
+          
+
+        
+
+    </body>
+</html>
